@@ -3,7 +3,7 @@
     "type": "ORM",
     "description": "ORM for PHP 7^",
     "keywords": ["ORM","PHP"],
-    "homepage": "https://coilphp.github.io/Coil/",
+    "homepage": "https://github.com/Chris-Kruining/vivid",
     "license": "GPL-3.0",
     "authors": [
         {
@@ -11,23 +11,15 @@
             "email": "chris@kruining.eu",
             "homepage": "https://github.com/Chris-Kruining",
             "role": "Developer"
-        },
-        {
-            "name": "Yop Spanjers",
-            "email": "yopspanjers@gmail.com",
-            "homepage": "https://linuxnews.eu",
-            "role": "Developer"
         }
     ],
     "require": {
         "php": ">=7.0.0",
-        "monolog/monolog": "~1.11",
-        "nesbot/carbon": "~1.20"
+        "monolog/monolog": "~1.11"
     },
     "require-dev": {
         "mockery/mockery": "~0.9.4",
-        "phpunit/phpunit": "~5.4",
-		"blackfire/php-sdk": "1.*"
+        "phpunit/phpunit": "~5.4"
     },
     "autoload": {
         "psr-4": {
