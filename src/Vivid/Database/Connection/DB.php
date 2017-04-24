@@ -12,12 +12,19 @@ namespace Database\Connection
     {
         private static $connection;
         private static $tables;
+        private static $config;
+
+        public static function Init(array $config, string $path)
+        {
+            static::$config = $config;
+            static::Cache($path);
+        }
 
         private static function GetConnection() : \PDO
         {
             if(static::$connection === null)
             {
-                static::$connection = new \PDO('mysql:host=127.0.0.1;charset=utf8', 'root', 'Chris@cpb-1995!');
+                static::$connection = new \PDO('mysql:host=' . static::$config['host'] . ';charset=utf8', static::$config['user'], static::$config['password']);
             }
 
             return static::$connection;
