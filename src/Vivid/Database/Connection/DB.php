@@ -3,8 +3,6 @@
 namespace Vivid\Database\Connection
 {
     use Vivid\Database\Query\Builder;
-    use Vivid\Database\Schema\Column;
-    use Vivid\Database\Schema\Table;
     use Vivid\Database\Schema\Type\AbstractType;
     use Vivid\Utility\Regex;
 
@@ -14,10 +12,10 @@ namespace Vivid\Database\Connection
         private static $tables;
         private static $config;
 
-        public static function Init(array $config, string $path)
+        public static function Init(array $config, string $path, string $prefix = '')
         {
             static::$config = $config;
-            static::Cache($path);
+            static::Cache($path, $prefix);
         }
 
         private static function GetConnection() : \PDO
@@ -37,8 +35,6 @@ namespace Vivid\Database\Connection
 
             try
             {
-                var_dump($query);
-
                 $stm = $connection->prepare(trim($query));
                 $stm->execute();
 
@@ -64,6 +60,7 @@ namespace Vivid\Database\Connection
         {
             return new Builder($table);
         }
+
         public static function Create(Table $table) : Table
         {
             return static::Query($table);
@@ -73,14 +70,17 @@ namespace Vivid\Database\Connection
         {
             return static::Query($builder->ToSql($builder::SELECT))["results"];
         }
+
         public static function Update(Builder $builder) : array
         {
             return static::Query($builder->ToSql($builder::UPDATE, ...array_slice(func_get_args(), 1)));
         }
+
         public static function Delete(Builder $builder) : array
         {
             return static::Query($builder->ToSql($builder::DELETE));
         }
+
         public static function Insert(Builder $builder) : array
         {
             return static::Query($builder->ToSql($builder::INSERT));
@@ -96,6 +96,7 @@ namespace Vivid\Database\Connection
                 'UPDATE_TIME',
             ])->Where('TABLE_SCHEMA LIKE "' . $prefix . '%"')->All();
         }
+
         protected static function Schema(string $database, string $table)
         {
             return static::Table('information_schema.columns')->Select([
@@ -108,12 +109,13 @@ namespace Vivid\Database\Connection
                 'EXTRA',
             ])->Where('TABLE_SCHEMA = "' . $database . '" && TABLE_NAME = "' . $table . '"')->All();
         }
+
         protected static function Indexes(string $table)
         {
             return static::Query('SHOW INDEX FROM ' . Regex::Encapsulate($table, '`') . ';');
         }
 
-        public static function Cache(string $path)
+        public static function Cache(string $path, string $prefix = '')
         {
             $path = getcwd() . DIRECTORY_SEPARATOR . $path . DIRECTORY_SEPARATOR;
             $file = $path . 'SchemaCache.json';
@@ -122,7 +124,7 @@ namespace Vivid\Database\Connection
 
             if(!file_exists($file))
             {
-                foreach(static::Tables('C_') as $table)
+                foreach(static::Tables($prefix) as $table)
                 {
                     extract($table);
                     $table = new Table($TABLE_SCHEMA . '.' . $TABLE_NAME);
@@ -167,6 +169,7 @@ namespace Vivid\Database\Connection
 
             static::$tables = $tables;
         }
+
         public static function IsCached(string $name) : bool
         {
             foreach(static::$tables as $table)
@@ -179,6 +182,7 @@ namespace Vivid\Database\Connection
 
             return false;
         }
+
         public static function GetCached(string $name) : Table
         {
             foreach(static::$tables as $table)
