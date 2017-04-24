@@ -1,8 +1,8 @@
 <?php
 
-namespace Database\Schema
+namespace Vivid\Database\Schema
 {
-    use Utility\Regex;
+    use Vivid\Utility\Regex;
 
     class Column implements \JsonSerializable
     {

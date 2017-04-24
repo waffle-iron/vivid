@@ -1,9 +1,9 @@
 <?php
 
-namespace Database\Vivid
+namespace Vivid\Database\Vivid
 {
-    use Database\Connection\DB;
-    use Utility\Regex;
+    use Vivid\Database\Connection\DB;
+    use Vivid\Utility\Regex;
 
     abstract class Model implements \IteratorAggregate, \ArrayAccess, \Countable, \Serializable
     {

@@ -1,9 +1,7 @@
 <?php
 
-namespace Database\Vivid
+namespace Vivid\Database\Vivid
 {
-    use Traversable;
-
     class Collection implements \IteratorAggregate, \ArrayAccess, \Countable
     {
         protected $models = [];

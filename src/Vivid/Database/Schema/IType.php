@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Schema
+namespace Vivid\Database\Schema
 {
     interface IType
     {

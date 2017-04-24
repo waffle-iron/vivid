@@ -1,9 +1,9 @@
 <?php
 
-namespace Database\Query
+namespace Vivid\Database\Query
 {
-    use Database\Connection\DB;
-    use Utility\Regex;
+    use Vivid\Database\Connection\DB;
+    use Vivid\Utility\Regex;
 
     class Builder
     {

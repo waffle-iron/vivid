@@ -1,9 +1,9 @@
 <?php
 
-namespace Database\Schema
+namespace Vivid\Database\Schema
 {
-    use Database\Connection\DB;
-    use Utility\Regex;
+    use Vivid\Database\Connection\DB;
+    use Vivid\Utility\Regex;
 
     class Table implements \JsonSerializable, \IteratorAggregate
     {

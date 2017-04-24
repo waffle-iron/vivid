@@ -1,6 +1,6 @@
 <?php
 
-namespace Utility
+namespace Vivid\Utility
 {
     class Regex
     {

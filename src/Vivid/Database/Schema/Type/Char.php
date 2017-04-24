@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Schema\Type
+namespace Vivid\Database\Schema\Type
 {
     class Char extends AbstractType
     {

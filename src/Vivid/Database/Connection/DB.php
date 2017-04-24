@@ -1,12 +1,12 @@
 <?php
 
-namespace Database\Connection
+namespace Vivid\Database\Connection
 {
-    use Database\Query\Builder;
-    use Database\Schema\Column;
-    use Database\Schema\Table;
-    use Database\Schema\Type\AbstractType;
-    use Utility\Regex;
+    use Vivid\Database\Query\Builder;
+    use Vivid\Database\Schema\Column;
+    use Vivid\Database\Schema\Table;
+    use Vivid\Database\Schema\Type\AbstractType;
+    use Vivid\Utility\Regex;
 
     class DB
     {

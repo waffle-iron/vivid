@@ -1,8 +1,8 @@
 <?php
 
-namespace Database\Schema\Type
+namespace Vivid\Database\Schema\Type
 {
-    use Database\Schema\IType;
+    use Vivid\Database\Schema\IType;
 
     class Datetime extends AbstractType
     {
