@@ -3,6 +3,7 @@
 namespace Vivid\Database\Connection
 {
     use Vivid\Database\Query\Builder;
+    use Vivid\Database\Schema\Table;
     use Vivid\Database\Schema\Type\AbstractType;
     use Vivid\Utility\Regex;
 
