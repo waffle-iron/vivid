@@ -2,3 +2,5 @@ language: php
 php:
 - 7
 script: bin/phpspec run
+
+kaas
