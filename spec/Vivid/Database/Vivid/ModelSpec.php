@@ -8,6 +8,11 @@ namespace spec\Vivid\Database\Vivid
 
     class ModelSpec extends ObjectBehavior
     {
+        function let()
+        {
+            $this->beInstanceOf(ModelMock::class);
+        }
+
         function it_is_initializable()
         {
             $this->shouldHaveType(Model::class);
@@ -19,5 +24,10 @@ namespace spec\Vivid\Database\Vivid
 
             $this->a_field->shouldReturn('a value');
         }
+    }
+
+    class ModelMock extends Model
+    {
+
     }
 }
