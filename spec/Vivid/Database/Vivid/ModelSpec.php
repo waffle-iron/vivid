@@ -10,7 +10,7 @@ namespace spec\Vivid\Database\Vivid
     {
         function let()
         {
-            $this->beInstanceOf(ModelMock::class);
+            $this->beAnInstanceOf(ModelMock::class);
         }
 
         function it_is_initializable()
