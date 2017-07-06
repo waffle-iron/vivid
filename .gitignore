@@ -3,3 +3,5 @@ Models
 index.php
 composer.lock
 vendor
+
+bin/
