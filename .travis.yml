@@ -1,4 +1,8 @@
 language: php
 php:
-- 7
-script: bin/phpspec run
+  - 7
+before_script:
+  - sudo apt-get update -qq
+  - composer install --dev
+script:
+  - bin/phpspec run
